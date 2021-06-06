@@ -27,6 +27,15 @@ function App() {
           Click me
         </Button>
       </div>
+      <div className="buttons">
+        <Button size="large" color="blue" outline>
+          Click me
+        </Button>
+        <Button outline>Click me</Button>
+        <Button size="small" color="gray" outline>
+          Click me
+        </Button>
+      </div>
     </div>
   );
 }

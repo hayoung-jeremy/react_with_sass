@@ -17,6 +17,16 @@ $gray: #999;
   &.pink:active {
     background: darken($color, 4%);
   }
+  // outline
+  &.outline {
+    color: $color;
+    background: none;
+    border: 1px solid $color;
+    &:hover {
+      background: $color;
+      color: white;
+    }
+  }
 }
 
 .Button {
