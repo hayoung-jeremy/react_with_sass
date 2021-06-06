@@ -2,6 +2,8 @@ $pink: #ffadad;
 
 .Button {
   display: inline-flex;
+  justify-content: center;
+  align-items: center;
   color: white;
   font-weight: bold;
   outline: none;
@@ -10,18 +12,45 @@ $pink: #ffadad;
   cursor: pointer;
 
   height: 2.25rem;
-  line-height: 2.25rem;
   padding-left: 1rem;
   padding-right: 1rem;
   font-size: 1rem;
 
   transition: 0.2s;
 
+  // size
+  &.large {
+    height: 3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 1.25rem;
+  }
+
+  &.medium {
+    height: 2.25rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 1rem;
+  }
+
+  &.small {
+    height: 1.75rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 0.875rem;
+  }
+
+  // bg
   background: $pink;
   &:hover {
     background: lighten($pink, 4%);
   }
   &:active {
     background: darken($pink, 4%);
+  }
+
+  // 여러개일 경우
+  & + & {
+    margin-left: 1rem;
   }
 }
