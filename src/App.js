@@ -36,6 +36,17 @@ function App() {
           Click me
         </Button>
       </div>
+      <div className="buttons">
+        <Button size="large" color="blue" fullWidth>
+          Click me
+        </Button>
+        <Button size="large" fullWidth>
+          Click me
+        </Button>
+        <Button size="large" color="gray" fullWidth>
+          Click me
+        </Button>
+      </div>
     </div>
   );
 }
