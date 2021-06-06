@@ -1,4 +1,23 @@
 $pink: #ffadad;
+$blue: #228be6;
+$gray: #999;
+
+// mixin
+@mixin button-color($color) {
+  background: $color;
+  &:hover {
+    background: lighten($color, 10%);
+  }
+  &:active {
+    background: darken($color, 10%);
+  }
+  &.pink:hover {
+    background: lighten($color, 4%);
+  }
+  &.pink:active {
+    background: darken($color, 4%);
+  }
+}
 
 .Button {
   display: inline-flex;
@@ -10,13 +29,6 @@ $pink: #ffadad;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-
-  height: 2.25rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  font-size: 1rem;
-
-  transition: 0.2s;
 
   // size
   &.large {
@@ -40,13 +52,15 @@ $pink: #ffadad;
     font-size: 0.875rem;
   }
 
-  // bg
-  background: $pink;
-  &:hover {
-    background: lighten($pink, 4%);
+  // color
+  &.blue {
+    @include button-color($blue);
   }
-  &:active {
-    background: darken($pink, 4%);
+  &.pink {
+    @include button-color($pink);
+  }
+  &.gray {
+    @include button-color($gray);
   }
 
   // 여러개일 경우

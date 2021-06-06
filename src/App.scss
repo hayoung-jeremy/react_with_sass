@@ -5,4 +5,7 @@
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 1rem;
+  .buttons + .buttons {
+    margin-top: 1rem;
+  }
 }
