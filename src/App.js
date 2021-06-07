@@ -4,6 +4,7 @@ import "./App.scss";
 import Box from "./components/Box";
 import Button from "./components/Button";
 import CheckBox from "./components/CheckBox";
+import Dialog from "./components/DIalog";
 import StyledButton from "./components/StyledButton";
 
 function App() {
@@ -145,6 +146,9 @@ function App() {
             </StyledButton>
           </div>
         </section>
+        <Dialog title="정말로 삭제하시겠습니까?" confirmText="확인" cancelText="취소">
+          데이터를 정말 삭제하시겠습니까?
+        </Dialog>
       </div>
     </ThemeProvider>
   );
