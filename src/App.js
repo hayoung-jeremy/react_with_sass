@@ -1,20 +1,26 @@
+import { useState } from "react";
 import "./App.scss";
 import Box from "./components/Box";
 import Button from "./components/Button";
+import CheckBox from "./components/CheckBox";
 
 function App() {
+  const [check, setCheck] = useState(false);
+  const onChange = (e) => {
+    setCheck(e.target.checked);
+  };
   return (
     <div className="App">
       <section>
         <h2>1) buttons</h2>
-        <div className="buttons">
+        <div className="container">
           <Button size="large" onClick={() => console.log("clicked!")}>
             Click me
           </Button>
           <Button>Click me</Button>
           <Button size="small">Click me</Button>
         </div>
-        <div className="buttons">
+        <div className="container">
           <Button size="large" color="gray">
             Click me
           </Button>
@@ -23,7 +29,7 @@ function App() {
             Click me
           </Button>
         </div>
-        <div className="buttons">
+        <div className="container">
           <Button size="large" color="blue">
             Click me
           </Button>
@@ -32,7 +38,7 @@ function App() {
             Click me
           </Button>
         </div>
-        <div className="buttons">
+        <div className="container">
           <Button size="large" color="blue" outline>
             Click me
           </Button>
@@ -41,7 +47,7 @@ function App() {
             Click me
           </Button>
         </div>
-        <div className="buttons">
+        <div className="container">
           <Button size="large" color="blue" fullWidth>
             Click me
           </Button>
@@ -56,7 +62,18 @@ function App() {
 
       <section>
         <h2>2) Css Module</h2>
-        <Box></Box>
+        <div className="container">
+          <Box></Box>
+        </div>
+        <div className="container">
+          <CheckBox onChange={onChange} checked={check}>
+            다음 약관에 모두 동의
+          </CheckBox>
+          <p>
+            <b>Check : </b>
+            {check ? "true" : "false"}
+          </p>
+        </div>
       </section>
     </div>
   );
