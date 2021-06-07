@@ -15,6 +15,9 @@
       border-bottom: 1px solid #ddd;
     }
   }
+  section:last-of-type {
+    margin-bottom: 4rem;
+  }
   .container + .container {
     margin-top: 1rem;
   }
