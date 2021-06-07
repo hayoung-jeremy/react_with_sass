@@ -1,8 +1,22 @@
 import { useState } from "react";
+import styled, { css } from "styled-components";
 import "./App.scss";
 import Box from "./components/Box";
 import Button from "./components/Button";
 import CheckBox from "./components/CheckBox";
+
+const Circle = styled.div`
+  width: 5rem;
+  height: 5rem;
+  background: ${(props) => props.color || "black"};
+  border-radius: 50%;
+  ${(props) =>
+    props.huge &&
+    css`
+      width: 10rem;
+      height: 10rem;
+    `};
+`;
 
 function App() {
   const [check, setCheck] = useState(false);
@@ -74,6 +88,11 @@ function App() {
             {check ? "true" : "false"}
           </p>
         </div>
+      </section>
+
+      <section>
+        <h2>3) Styled Components</h2>
+        <Circle color="pink" huge />
       </section>
     </div>
   );
