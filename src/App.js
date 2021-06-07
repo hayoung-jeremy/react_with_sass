@@ -4,19 +4,7 @@ import "./App.scss";
 import Box from "./components/Box";
 import Button from "./components/Button";
 import CheckBox from "./components/CheckBox";
-
-const Circle = styled.div`
-  width: 5rem;
-  height: 5rem;
-  background: ${(props) => props.color || "black"};
-  border-radius: 50%;
-  ${(props) =>
-    props.huge &&
-    css`
-      width: 10rem;
-      height: 10rem;
-    `};
-`;
+import StyledButton from "./components/StyledButton";
 
 function App() {
   const [check, setCheck] = useState(false);
@@ -92,7 +80,9 @@ function App() {
 
       <section>
         <h2>3) Styled Components</h2>
-        <Circle color="pink" huge />
+        <div className="container">
+          <StyledButton>BUTTON</StyledButton>
+        </div>
       </section>
     </div>
   );
