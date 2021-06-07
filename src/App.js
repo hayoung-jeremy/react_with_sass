@@ -1,5 +1,4 @@
 import { useState } from "react";
-import styled, { css } from "styled-components";
 import "./App.scss";
 import Box from "./components/Box";
 import Button from "./components/Button";

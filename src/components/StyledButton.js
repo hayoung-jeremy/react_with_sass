@@ -1,3 +1,4 @@
+import { darken, lighten } from "polished";
 import React from "react";
 import styled from "styled-components";
 
@@ -23,10 +24,10 @@ const StyledBtn = styled.button`
   // color
   background: #228be6;
   &:hover {
-    background: #339af0;
+    background: ${lighten(0.1, "#228be6")};
   }
   &:active {
-    background: #1c7ed6;
+    background: ${darken(0.1, "#228be6")};
   }
 
   & + & {
