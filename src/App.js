@@ -4,7 +4,7 @@ import "./App.scss";
 import Box from "./components/Box";
 import Button from "./components/Button";
 import CheckBox from "./components/CheckBox";
-import Dialog from "./components/DIalog";
+import Dialog from "./components/Dialog";
 import StyledButton from "./components/StyledButton";
 
 function App() {

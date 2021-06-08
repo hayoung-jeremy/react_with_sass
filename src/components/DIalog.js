@@ -1,6 +1,42 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useEffect, useState } from "react";
+import styled, { css, keyframes } from "styled-components";
 import StyledButton from "./StyledButton";
+
+const fadeIn = keyframes`
+    from{
+        opacity: 0
+    }
+    to{
+        opacity: 1
+    }
+`;
+
+const fadeOut = keyframes`
+    from{
+        opacity: 1
+    }
+    to{
+        opacity: 0
+    }
+`;
+
+const slideUp = keyframes`
+    from{
+        transform: translateY(100px);
+    }
+    to{
+        transform: translateY(0px);
+    }
+`;
+
+const slideDown = keyframes`
+    from{
+        transform: translateY(0px);
+    }
+    to{
+        transform: translateY(100px);
+    }
+`;
 
 const DarkBackground = styled.div`
   display: flex;
@@ -14,6 +50,19 @@ const DarkBackground = styled.div`
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
+
+  // fade In :
+  animation-duration: 0.25s;
+  animation-timing-function: ease-out;
+  animation-name: ${fadeIn};
+  animation-fill-mode: forwards;
+
+  // fade Out :
+  ${(props) =>
+    props.disappear &&
+    css`
+      animation-name: ${fadeOut};
+    `}
 `;
 
 const DialogBlock = styled.div`
@@ -30,6 +79,19 @@ const DialogBlock = styled.div`
   p {
     font-size: 1.125rem;
   }
+
+  // slide Up
+  animation-duration: 0.25s;
+  animation-timing-function: ease-out;
+  animation-name: ${slideUp};
+  animation-fill-mode: forwards;
+
+  // slide Down
+  ${(props) =>
+    props.disappear &&
+    css`
+      animation-name: ${slideDown};
+    `}
 `;
 
 const ButtonGroup = styled.div`
@@ -45,10 +107,23 @@ const ShortMarginButton = styled(StyledButton)`
 `;
 
 const Dialog = ({ title, children, cancelText, confirmText, onConfirm, onCancel, visible }) => {
-  if (!visible) return null;
+  const [animate, setAnimate] = useState(false);
+  const [localVisible, setLocalVisible] = useState(visible);
+
+  useEffect(() => {
+    // visible 값이 true -> false 가 되는 것을 감지 : dialog box 에서 삭제하기나 취소 버튼을 누를 때
+    if (localVisible && !visible) {
+      setAnimate(true);
+      setTimeout(() => setAnimate(false), 200);
+    }
+    setLocalVisible(visible);
+  }, [localVisible, visible]);
+
+  // animate 값을 추가해서 dialog box 가 사라지는 시간에 delay 를 줌
+  if (!animate && !localVisible) return null;
   return (
-    <DarkBackground>
-      <DialogBlock>
+    <DarkBackground disappear={!visible}>
+      <DialogBlock disappear={!visible}>
         <h3>{title}</h3>
         <p>{children}</p>
         <ButtonGroup>
