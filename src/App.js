@@ -8,9 +8,23 @@ import Dialog from "./components/DIalog";
 import StyledButton from "./components/StyledButton";
 
 function App() {
+  // checkbox
   const [check, setCheck] = useState(false);
   const onChange = (e) => {
     setCheck(e.target.checked);
+  };
+  // dark background
+  const [dialog, setDialog] = useState(false);
+  const onClick = () => {
+    setDialog(true);
+  };
+  const onCancel = () => {
+    console.log("취소");
+    setDialog(false);
+  };
+  const onConfirm = () => {
+    console.log("확인");
+    setDialog(false);
   };
   return (
     <ThemeProvider
@@ -141,12 +155,19 @@ function App() {
             <StyledButton color="pink" size="large" fullWidthStyle>
               BUTTON
             </StyledButton>
-            <StyledButton color="gray" size="large" fullWidthStyle>
-              BUTTON
+            <StyledButton color="gray" size="large" fullWidthStyle onClick={onClick}>
+              DELETE
             </StyledButton>
           </div>
         </section>
-        <Dialog title="정말로 삭제하시겠습니까?" confirmText="확인" cancelText="취소">
+        <Dialog
+          title="정말로 삭제하시겠습니까?"
+          confirmText="삭제하기"
+          cancelText="취소"
+          onCancel={onCancel}
+          onConfirm={onConfirm}
+          visible={dialog}
+        >
           데이터를 정말 삭제하시겠습니까?
         </Dialog>
       </div>

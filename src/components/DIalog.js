@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Button from "./Button";
+import StyledButton from "./StyledButton";
 
 const DarkBackground = styled.div`
   display: flex;
@@ -38,15 +38,26 @@ const ButtonGroup = styled.div`
   justify-content: flex-end;
 `;
 
-const Dialog = ({ title, children, cancelText, confirmText }) => {
+const ShortMarginButton = styled(StyledButton)`
+  & + & {
+    margin-left: 0.5rem;
+  }
+`;
+
+const Dialog = ({ title, children, cancelText, confirmText, onConfirm, onCancel, visible }) => {
+  if (!visible) return null;
   return (
     <DarkBackground>
       <DialogBlock>
         <h3>{title}</h3>
         <p>{children}</p>
         <ButtonGroup>
-          <Button color="gray">{cancelText}</Button>
-          <Button color="pink">{confirmText}</Button>
+          <ShortMarginButton color="gray" onClick={onCancel}>
+            {cancelText}
+          </ShortMarginButton>
+          <ShortMarginButton color="pink" onClick={onConfirm}>
+            {confirmText}
+          </ShortMarginButton>
         </ButtonGroup>
       </DialogBlock>
     </DarkBackground>
